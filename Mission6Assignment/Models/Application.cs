@@ -22,7 +22,7 @@ namespace Mission6Assignment.Models
         [Required]
         public required string Rating { get; set; } 
 
-        public bool? Edited { get; set; } 
+        public bool Edited { get; set; } 
 
         public string? LentTo { get; set; } 
 
