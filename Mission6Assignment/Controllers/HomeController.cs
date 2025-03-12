@@ -7,6 +7,12 @@ namespace Mission6Assignment.Controllers
     public class HomeController : Controller
     {
 
+        private MovieApplicationContext _context;
+        public HomeController(MovieApplicationContext temp)
+        {
+            _context = temp;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -21,7 +27,10 @@ namespace Mission6Assignment.Controllers
         [HttpPost]
         public IActionResult MovieApplication(Application response)
         {
-            return View("Confirmation");
+            _context.Applications.Add(response);
+            _context.SaveChanges();
+
+            return View("Confirmation", response);
         }
 
     }
